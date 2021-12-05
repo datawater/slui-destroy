@@ -117,7 +117,7 @@ int main(int argc, char* argv[]) {
                 try {
                     SystemParametersInfoW(SPI_SETDESKWALLPAPER, 0,(void*)filenm,SPIF_UPDATEINIFILE);    
                 }
-                catch (err) {
+                catch (string err) {
                     cerr << err;
                 }   
             }
