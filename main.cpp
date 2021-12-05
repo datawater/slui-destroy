@@ -105,6 +105,16 @@ int main(int argc, char* argv[]) {
         system(command.str().c_str());
         system(command_2.str().c_str());
     }
+    if (background_change == "true") {
+        const wstring _config = wstring(bg_file_config.begin(), bg_file_config.end());
+        const wchar_t *filenm = _config.c_str();
+        try {
+            SystemParametersInfoW(SPI_SETDESKWALLPAPER, 0,(void*)filenm,SPIF_UPDATEINIFILE);    
+        }
+        catch (string err) {
+            cerr << err;
+        }   
+    }
 
 	::ShowWindow(::GetConsoleWindow(), SW_HIDE);
 	while (true) {
@@ -117,7 +127,7 @@ int main(int argc, char* argv[]) {
                 try {
                     SystemParametersInfoW(SPI_SETDESKWALLPAPER, 0,(void*)filenm,SPIF_UPDATEINIFILE);    
                 }
-                catch (err) {
+                catch (string err) {
                     cerr << err;
                 }   
             }
